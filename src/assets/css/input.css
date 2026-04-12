@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+   --font-lexend: "Lexend", sans-serif;
+
+   --color-bank-bg: #1a1a1a;
+   --color-bank-surface: #1c1c1c;
+   --color-bank-surface-soft: #222222;
+   --color-bank-line: #262626;
+   --color-bank-copy: #b3b3b3;
+   --color-bank-muted: #666666;
+   --color-bank-lime: #caff33;
+}
+
+@layer base {
+   body {
+      background-color: var(--color-bank-bg);
+      color: #ffffff;
+      font-family: var(--font-lexend);
+   }
+}
+
+@layer components {
+   .login-section-bg {
+      background-image: url("../../login-page/assets/img/login-background.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0.3;
+      mix-blend-mode: overlay;
+      filter: grayscale(1) brightness(0.45) contrast(1.05);
+   }
+
+   .login-corner-decor {
+      background-image: url("../../login-page/assets/img/Abstract Design.svg");
+      background-position: top right;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0.3;
+   }
+
+   .brand-social-shell {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 10px;
+      width: 94px;
+      height: 94px;
+      padding: 12px;
+      border-radius: 70px;
+      isolation: isolate;
+   }
+
+   .brand-social-core {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 10px;
+      width: 70px;
+      height: 70px;
+      padding: 20px;
+      border-radius: 50px;
+      isolation: isolate;
+   }
+
+   .brand-social-core img {
+      position: relative;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+   }
+
+   .brand-social-shell::before,
+   .brand-social-core::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+         180deg,
+         rgba(202, 255, 51, 1) 0%,
+         rgba(202, 255, 51, 0) 100%
+      );
+      -webkit-mask:
+         linear-gradient(#fff 0 0) content-box,
+         linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask:
+         linear-gradient(#fff 0 0) content-box,
+         linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      z-index: 2;
+      pointer-events: none;
+   }
+
+   .brand-social-shell::after {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 9999px;
+      background: radial-gradient(
+         circle,
+         rgba(202, 255, 51, 0.28) 0%,
+         rgba(202, 255, 51, 0.14) 42%,
+         rgba(202, 255, 51, 0.03) 68%,
+         transparent 82%
+      );
+      filter: blur(10px);
+      opacity: 0.9;
+      z-index: 0;
+      pointer-events: none;
+   }
+
+   .brand-social-core::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 9999px;
+      background: radial-gradient(
+         circle,
+         rgba(202, 255, 51, 0.18) 0%,
+         rgba(202, 255, 51, 0.08) 48%,
+         rgba(202, 255, 51, 0.02) 70%,
+         transparent 84%
+      );
+      filter: blur(8px);
+      z-index: 0;
+      pointer-events: none;
+   }
+}
