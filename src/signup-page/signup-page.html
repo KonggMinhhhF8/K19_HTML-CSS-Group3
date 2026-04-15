@@ -3,8 +3,553 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+         rel="stylesheet" />
       <link href="../assets/css/tailwind.css" rel="stylesheet" />
       <title>Sign Up Page</title>
    </head>
-   <body></body>
+   <body class="min-h-screen bg-bank-bg text-white">
+      <div class="relative overflow-x-hidden">
+         <header
+            class="relative z-20 px-4 pb-6 pt-5 min-[992px]:px-6 min-[1440px]:px-10 min-[1440px]:pt-7 min-[1440px]:pb-8">
+            <input type="checkbox" id="mobile-nav-toggle" class="peer sr-only" />
+            <div
+               class="mx-auto flex w-full max-w-[1596px] items-center justify-between rounded-[100px] border border-bank-line bg-bank-surface px-4 py-3 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] min-[992px]:px-6 min-[992px]:py-[14px] min-[1200px]:px-8 min-[1440px]:h-[73px] min-[1440px]:max-w-[1280px] min-[1440px]:px-6 min-[1920px]:h-[95px] min-[1920px]:max-w-[1596px] min-[1920px]:px-[34px] min-[1920px]:py-[20px]">
+               <a href="#" class="flex items-center gap-2.5">
+                  <img
+                     src="../assets/icons/logo.svg"
+                     alt="YourBank logo"
+                     class="h-8 w-8 min-[992px]:h-10 min-[992px]:w-10" />
+                  <span
+                     class="text-sm font-normal tracking-[-0.02em] min-[992px]:text-[14px] min-[1920px]:text-[18px]"
+                     >YourBank</span
+                  >
+               </a>
+
+               <nav
+                  class="hidden items-center text-bank-copy min-[992px]:flex min-[992px]:gap-5 min-[992px]:text-[14px] min-[1920px]:gap-[26px] min-[1920px]:text-[18px]">
+                  <a href="#" class="transition hover:text-white">Home</a>
+                  <a href="#" class="transition hover:text-white">Careers</a>
+                  <a href="#" class="transition hover:text-white">About</a>
+                  <a href="#" class="transition hover:text-white">Security</a>
+               </nav>
+
+               <div
+                  class="hidden items-center min-[992px]:flex min-[992px]:gap-4 min-[1440px]:gap-5 min-[1920px]:gap-[30px]">
+                  <a
+                     href="../login-page/login-page.html"
+                     class="text-[14px] font-normal text-white transition hover:text-bank-lime min-[1920px]:text-[18px]"
+                     >Login</a
+                  >
+                  <a
+                     href="./signup-page.html"
+                     class="flex h-[45px] items-center justify-center rounded-[82px] bg-bank-lime px-6 py-3 text-[14px] font-normal whitespace-nowrap text-black transition hover:bg-[#d7ff66] min-[1440px]:w-[87px] min-[1920px]:h-[55px] min-[1920px]:w-[109px] min-[1920px]:px-[30px] min-[1920px]:py-[14px] min-[1920px]:text-[18px]">
+                     Sign Up
+                  </a>
+               </div>
+
+               <label
+                  for="mobile-nav-toggle"
+                  aria-label="Toggle navigation"
+                  class="block cursor-pointer min-[992px]:hidden">
+                  <img src="../assets/icons/menu-button.svg" alt="" class="h-10 w-14" />
+               </label>
+            </div>
+
+            <div
+               class="mx-auto mt-4 hidden w-full max-w-[720px] rounded-[24px] border border-bank-line bg-bank-surface p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] peer-checked:block min-[992px]:hidden">
+               <nav class="flex flex-col gap-4 text-[14px] text-bank-copy">
+                  <a href="#" class="transition hover:text-white">Home</a>
+                  <a href="#" class="transition hover:text-white">Careers</a>
+                  <a href="#" class="transition hover:text-white">About</a>
+                  <a href="#" class="transition hover:text-white">Security</a>
+               </nav>
+
+               <div class="mt-5 flex flex-col gap-3">
+                  <a
+                     href="../login-page/login-page.html"
+                     class="text-[14px] font-normal text-white transition hover:text-bank-lime">
+                     Login
+                  </a>
+                  <a
+                     href="./signup-page.html"
+                     class="flex h-[45px] items-center justify-center rounded-[82px] bg-bank-lime px-6 py-3 text-[14px] font-normal whitespace-nowrap text-black transition hover:bg-[#d7ff66]">
+                     Sign Up
+                  </a>
+               </div>
+            </div>
+         </header>
+
+         <main class="relative z-10">
+            <section class="px-4 pt-2 min-[992px]:px-6 min-[1200px]:px-8 min-[1440px]:px-10">
+               <div
+                  class="relative isolate mx-auto w-full overflow-hidden rounded-[20px] border border-white/6 bg-bank-surface px-4 py-12 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] min-[992px]:max-w-[1064px] min-[992px]:rounded-[16px] min-[992px]:px-[80px] min-[992px]:py-[80px] min-[992px]:min-h-[711px] min-[1200px]:px-[140px] min-[1440px]:px-[200px] min-[1920px]:max-w-[1326px] min-[1920px]:rounded-[20px] min-[1920px]:px-[150px] min-[1920px]:py-[100px] min-[1920px]:min-h-[890px]">
+                  <div
+                     class="login-section-bg rounded-[20px] pointer-events-none absolute inset-0"></div>
+                  <div
+                     class="login-corner-decor pointer-events-none absolute right-0 top-0 h-[180px] w-[180px] min-[992px]:h-[300px] min-[992px]:w-[300px]"></div>
+                  <div
+                     class="relative mx-auto flex min-h-[430px] items-center min-[768px]:max-w-[860px]">
+                     <section class="w-full text-center">
+                        <h1
+                           class="text-[28px] font-medium leading-none text-bank-lime min-[992px]:text-[38px] min-[1920px]:text-[48px]">
+                           Sign Up
+                        </h1>
+                        <p
+                           class="mt-2.5 font-light text-[14px] text-[#BFBFBF] min-[992px]:mt-4 min-[992px]:text-[16px] min-[1920px]:mt-5 min-[1920px]:text-[18px]">
+                           Join our community today! Create an account to unlock exclusive features
+                           and personalized experiences.
+                        </p>
+
+                        <form class="mt-10 space-y-5 min-[992px]:mt-[60px] min-[1920px]:mt-20">
+                           <div
+                              class="grid gap-5 min-[992px]:grid-cols-2 min-[992px]:gap-6 min-[1920px]:gap-[30px]">
+                              <label class="block">
+                                 <span class="sr-only">First Name</span>
+                                 <input
+                                    type="text"
+                                    placeholder="Enter First Name"
+                                    class="h-14 w-full rounded-full border border-white/6 bg-bank-bg px-6 text-sm text-white outline-none placeholder:text-bank-muted focus:border-bank-lime/60 min-[992px]:h-16 min-[992px]:text-[15px]" />
+                              </label>
+
+                              <label class="block">
+                                 <span class="sr-only">Last Name</span>
+                                 <input
+                                    type="text"
+                                    placeholder="Enter Last Name"
+                                    class="h-14 w-full rounded-full border border-white/6 bg-bank-bg px-6 text-sm text-white outline-none placeholder:text-bank-muted focus:border-bank-lime/60 min-[992px]:h-16 min-[992px]:text-[15px]" />
+                              </label>
+
+                              <label class="block">
+                                 <span class="sr-only">Email</span>
+                                 <input
+                                    type="email"
+                                    placeholder="Enter your Email"
+                                    class="h-14 w-full rounded-full border border-white/6 bg-bank-bg px-6 text-sm text-white outline-none placeholder:text-bank-muted focus:border-bank-lime/60 min-[992px]:h-16 min-[992px]:text-[15px]" />
+                              </label>
+
+                              <label class="relative block">
+                                 <span class="sr-only">Password</span>
+                                 <input
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    class="h-14 w-full rounded-full border border-white/6 bg-bank-bg px-6 pr-14 text-sm text-white outline-none placeholder:text-bank-muted focus:border-bank-lime/60 min-[992px]:h-16 min-[992px]:text-[15px]" />
+                                 <span
+                                    aria-hidden="true"
+                                    class="pointer-events-none absolute inset-y-0 right-5 flex items-center text-bank-muted">
+                                    <svg
+                                       class="h-5 w-5"
+                                       viewBox="0 0 24 24"
+                                       fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path
+                                          d="M2.25 12C3.75 8.25 7.125 6 12 6C16.875 6 20.25 8.25 21.75 12C20.25 15.75 16.875 18 12 18C7.125 18 3.75 15.75 2.25 12Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.5" />
+                                       <circle
+                                          cx="12"
+                                          cy="12"
+                                          r="2.5"
+                                          stroke="currentColor"
+                                          stroke-width="1.5" />
+                                    </svg>
+                                 </span>
+                              </label>
+                           </div>
+
+                           <div
+                              class="mx-auto mt-6 w-full max-w-[404px] min-[768px]:max-w-[560px] min-[992px]:mt-[30px] min-[992px]:max-w-[404px] min-[1920px]:mt-10 min-[1920px]:max-w-[518px]">
+                              <div
+                                 class="flex flex-col items-center gap-3 pt-1">
+                                 <button
+                                    type="submit"
+                                    class="h-[49px] w-full rounded-[63px] bg-bank-lime px-6 py-[14px] text-center text-[14px] leading-[150%] font-normal text-bank-line transition hover:bg-[#d7ff66] min-[1920px]:h-[63px] min-[1920px]:px-5 min-[1920px]:py-[18px] min-[1920px]:text-[18px]">
+                                    Sign Up
+                                 </button>
+                                 <a
+                                    href="../login-page/login-page.html"
+                                    class="flex h-[49px] w-full items-center justify-center rounded-[63px] border border-[#333333] bg-[#262626] px-6 py-[14px] text-center text-[14px] leading-[150%] font-normal text-white transition hover:border-white/25 hover:bg-[#303030] min-[1920px]:h-[63px] min-[1920px]:px-5 min-[1920px]:py-[18px] min-[1920px]:text-[18px]">
+                                    Login
+                                 </a>
+                              </div>
+                           </div>
+                        </form>
+
+                        <div
+                           class="mx-auto mt-8 w-full max-w-[404px] min-[768px]:max-w-[560px] min-[992px]:max-w-[404px] min-[1920px]:max-w-[518px]">
+                           <div class="flex items-center gap-4 min-[1920px]:gap-5">
+                              <span class="h-px flex-1 bg-white/10"></span>
+                              <span
+                                 class="text-center text-[14px] leading-[150%] font-normal text-bank-copy min-[1920px]:text-[18px]"
+                                 >Or Continue with</span
+                              >
+                              <span class="h-px flex-1 bg-white/10"></span>
+                           </div>
+
+                           <div
+                              class="mt-7 flex items-center justify-center gap-4 min-[992px]:gap-5">
+                              <a href="#" aria-label="Continue with Google">
+                                 <span class="login-social-shell">
+                                    <span class="login-social-core">
+                                       <img src="../assets/icons/google.svg" alt="" />
+                                    </span>
+                                 </span>
+                              </a>
+                              <a href="#" aria-label="Continue with Facebook">
+                                 <span class="login-social-shell">
+                                    <span class="login-social-core">
+                                       <img src="../assets/icons/facebook.svg" alt="" />
+                                    </span>
+                                 </span>
+                              </a>
+                              <a href="#" aria-label="Continue with Apple">
+                                 <span class="login-social-shell">
+                                    <span class="login-social-core">
+                                       <img src="../assets/icons/apple.svg" alt="" />
+                                    </span>
+                                 </span>
+                              </a>
+                           </div>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+            </section>
+
+            <section
+               class="px-4 pb-20 pt-20 min-[992px]:px-6 min-[992px]:pb-24 min-[992px]:pt-[120px] min-[1200px]:px-8 min-[1440px]:px-10 min-[1920px]:pt-[150px]">
+               <div class="mx-auto max-w-[1600px]">
+                  <div
+                     class="flex flex-col items-center gap-8 min-[992px]:flex-row min-[992px]:items-end min-[992px]:justify-between">
+                     <div class="max-w-[920px]">
+                        <h2
+                           class="text-center text-[28px] leading-[150%] font-medium text-white min-[992px]:text-left min-[992px]:text-[38px] min-[1920px]:text-[48px]">
+                           Our <span class="text-bank-lime">Testimonials</span>
+                        </h2>
+                        <p
+                           class="mt-4 max-w-[820px] text-center text-[14px] leading-[150%] font-light text-bank-copy min-[992px]:text-left min-[1920px]:text-[18px]">
+                           Discover how YourBank has transformed lives with innovative digital
+                           solutions and personalized customer service. See why our clients trust us
+                           for a secure and prosperous financial journey.
+                        </p>
+                     </div>
+
+                     <fieldset
+                        class="inline-flex h-[65px] w-[299px] items-center justify-between rounded-[82px] border border-bank-line bg-bank-surface p-3 min-[1920px]:h-[83px] min-[1920px]:w-[386px] min-[1920px]:p-[14px]">
+                        <legend class="sr-only">Testimonials audience</legend>
+
+                        <div>
+                           <input
+                              type="radio"
+                              name="testimonials-audience"
+                              id="testimonials-individuals"
+                              class="peer sr-only"
+                              checked />
+                           <label
+                              for="testimonials-individuals"
+                              class="flex h-[41px] w-[139px] cursor-pointer items-center justify-center rounded-[140px] px-[18px] py-[10px] text-center text-[14px] leading-[150%] font-normal whitespace-nowrap text-bank-copy transition peer-checked:bg-bank-lime peer-checked:text-bank-surface min-[1920px]:h-[55px] min-[1920px]:w-[181px] min-[1920px]:px-6 min-[1920px]:py-[14px] min-[1920px]:text-[18px]">
+                              For Individuals
+                           </label>
+                        </div>
+
+                        <div>
+                           <input
+                              type="radio"
+                              name="testimonials-audience"
+                              id="testimonials-businesses"
+                              class="peer sr-only" />
+                           <label
+                              for="testimonials-businesses"
+                              class="flex h-[41px] w-[139px] cursor-pointer items-center justify-center rounded-[140px] px-[18px] py-[10px] text-center text-[14px] leading-[150%] font-normal whitespace-nowrap text-bank-copy transition peer-checked:bg-bank-lime peer-checked:text-bank-surface min-[1920px]:h-[55px] min-[1920px]:w-[181px] min-[1920px]:px-6 min-[1920px]:py-[14px] min-[1920px]:text-[18px]">
+                              For Businesses
+                           </label>
+                        </div>
+                     </fieldset>
+                  </div>
+
+                  <div class="mt-10 min-[768px]:hidden">
+                     <article
+                        class="rounded-[20px] border border-white/6 bg-bank-surface px-5 py-8 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+                        <div class="flex items-center gap-4 min-[1920px]:gap-5">
+                           <span class="h-0 w-full border-t border-bank-line"></span>
+                           <img
+                              src="../assets/icons/quotation-mark.svg"
+                              alt=""
+                              class="h-10 w-auto shrink-0" />
+                           <span class="h-0 w-full border-t border-bank-line"></span>
+                        </div>
+                        <p
+                           class="mt-7 text-center text-[14px] leading-[150%] font-normal text-white min-[1440px]:text-[16px] min-[1920px]:text-[18px]">
+                           I recently started using YourBank, and I am impressed by how smooth the
+                           account access experience feels. Lorem ipsum dolor sit amet, consectetur
+                           adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <p
+                           class="mt-6 text-center text-[16px] leading-[150%] font-medium text-bank-lime min-[1920px]:text-[18px]">
+                           John D
+                        </p>
+                     </article>
+
+                     <div class="mt-6 flex items-center justify-center gap-4">
+                        <button
+                           type="button"
+                           aria-label="Previous testimonial"
+                           class="flex h-[62px] w-[62px] items-center justify-center rounded-full border border-bank-line bg-bank-surface p-[14px]">
+                           <img src="../assets/icons/arrow.svg" alt="" class="h-[19px] w-5" />
+                        </button>
+                        <button
+                           type="button"
+                           aria-label="Next testimonial"
+                           class="flex h-[62px] w-[62px] items-center justify-center rounded-full border border-bank-line bg-bank-surface p-[14px]">
+                           <img
+                              src="../assets/icons/arrow.svg"
+                              alt=""
+                              class="h-[19px] w-5 rotate-180" />
+                        </button>
+                     </div>
+                  </div>
+
+                  <div class="mt-20 hidden min-[768px]:block min-[992px]:hidden">
+                     <div class="grid gap-6 min-[992px]:grid-cols-2 min-[1200px]:grid-cols-3">
+                        <article
+                           class="rounded-[20px] border border-bank-line bg-bank-surface px-6 py-8 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+                           <div class="flex items-center gap-4">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-10 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-7 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px]">
+                              YourBank has been my trusted financial partner for years. Their
+                              personalized service and secure digital banking tools make daily money
+                              management simple and reliable.
+                           </p>
+                           <p
+                              class="mt-6 text-center text-[16px] leading-[150%] font-medium text-bank-lime">
+                              Sarah T
+                           </p>
+                        </article>
+
+                        <article
+                           class="rounded-[20px] border border-bank-line bg-bank-surface px-6 py-8 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+                           <div class="flex items-center gap-4">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-10 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-7 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px]">
+                              I recently switched to YourBank, and the experience has been
+                              outstanding. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore.
+                           </p>
+                           <p
+                              class="mt-6 text-center text-[16px] leading-[150%] font-medium text-bank-lime">
+                              John D
+                           </p>
+                        </article>
+
+                        <article
+                           class="rounded-[20px] border border-bank-line bg-bank-surface px-6 py-8 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.02)] min-[992px]:col-span-2 min-[1200px]:col-span-1">
+                           <div class="flex items-center gap-4">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-10 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-7 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px]">
+                              From quick transfers to clear account insights, every part of the
+                              product feels thoughtful. Lorem ipsum dolor sit amet, consectetur
+                              adipiscing elit, sed do eiusmod tempor incididunt.
+                           </p>
+                           <p
+                              class="mt-6 text-center text-[16px] leading-[150%] font-medium text-bank-lime">
+                              Maria L
+                           </p>
+                        </article>
+                     </div>
+                  </div>
+
+                  <div class="relative mt-20 hidden min-[992px]:block min-[1920px]:mt-[100px]">
+                     <button
+                        type="button"
+                        aria-label="Previous testimonials"
+                        class="absolute left-0 top-1/2 z-10 flex h-[62px] w-[62px] -translate-y-1/2 items-center justify-center rounded-full border border-bank-line bg-bank-surface p-[14px]">
+                        <img src="../assets/icons/arrow.svg" alt="" class="h-[19px] w-5" />
+                     </button>
+                     <button
+                        type="button"
+                        aria-label="Next testimonials"
+                        class="absolute right-0 top-1/2 z-10 flex h-[62px] w-[62px] -translate-y-1/2 items-center justify-center rounded-full border border-bank-line bg-bank-surface p-[14px]">
+                        <img
+                           src="../assets/icons/arrow.svg"
+                           alt=""
+                           class="h-[19px] w-5 rotate-180" />
+                     </button>
+
+                     <div class="mx-[102px] grid grid-cols-3 gap-8 min-[1920px]:mx-[112px]">
+                        <article class="px-10 py-8 text-center">
+                           <div class="flex items-center gap-4 min-[1920px]:gap-5">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-11 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-8 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px] min-[1920px]:text-[18px]">
+                              YourBank has been my trusted financial partner for years. Their
+                              personalized service and secure digital banking tools make daily money
+                              management simple and reliable.
+                           </p>
+                           <p
+                              class="mt-8 text-center text-[16px] leading-[150%] font-medium text-bank-lime min-[1920px]:text-[18px]">
+                              Sarah T
+                           </p>
+                        </article>
+
+                        <article class="px-10 py-8 text-center">
+                           <div class="flex items-center gap-4 min-[1920px]:gap-5">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-11 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-8 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px] min-[1920px]:text-[18px]">
+                              I recently switched to YourBank, and the experience has been
+                              outstanding. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut labore et dolore.
+                           </p>
+                           <p
+                              class="mt-8 text-center text-[16px] leading-[150%] font-medium text-bank-lime min-[1920px]:text-[18px]">
+                              John D
+                           </p>
+                        </article>
+
+                        <article class="px-10 py-8 text-center">
+                           <div class="flex items-center gap-4 min-[1920px]:gap-5">
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                              <img
+                                 src="../assets/icons/quotation-mark.svg"
+                                 alt=""
+                                 class="h-11 w-auto shrink-0" />
+                              <span class="h-0 w-full border-t border-bank-line"></span>
+                           </div>
+                           <p
+                              class="mt-8 text-center text-[14px] leading-[150%] font-normal text-white min-[992px]:text-[16px] min-[1920px]:text-[18px]">
+                              From quick transfers to clear account insights, every part of the
+                              product feels thoughtful. Lorem ipsum dolor sit amet, consectetur
+                              adipiscing elit, sed do eiusmod tempor incididunt.
+                           </p>
+                           <p
+                              class="mt-8 text-center text-[16px] leading-[150%] font-medium text-bank-lime min-[1920px]:text-[18px]">
+                              Maria L
+                           </p>
+                        </article>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </main>
+
+         <footer
+            class="relative z-10 border-t border-white/6 bg-bank-surface px-4 pb-[30px] pt-[50px] min-[992px]:px-20 min-[992px]:pb-[30px] min-[992px]:pt-[60px] min-[1920px]:px-[162px] min-[1920px]:pb-[50px] min-[1920px]:pt-[100px]">
+            <div class="mx-auto max-w-[1596px]">
+               <div class="flex flex-col items-center">
+                  <a href="#" class="flex items-center gap-[3.54px]">
+                     <img
+                        src="../assets/icons/logo.svg"
+                        alt="YourBank logo"
+                        class="h-8 w-8 min-[992px]:h-10 min-[992px]:w-10" />
+                     <span class="text-sm font-medium tracking-[-0.02em] min-[992px]:text-lg"
+                        >YourBank</span
+                     >
+                  </a>
+
+                  <nav
+                     class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-bank-copy min-[992px]:mt-10 min-[1920px]:mt-[50px]">
+                     <a href="#" class="transition hover:text-white">Home</a>
+                     <a href="#" class="transition hover:text-white">Careers</a>
+                     <a href="#" class="transition hover:text-white">About</a>
+                     <a href="#" class="transition hover:text-white">Security</a>
+                  </nav>
+
+                  <div
+                     class="mt-[30px] flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-5 border-y border-bank-line py-[30px] text-sm text-bank-copy min-[768px]:gap-5 min-[768px]:py-10 min-[992px]:mt-10 min-[1920px]:mt-[50px] min-[1920px]:py-[50px]">
+                     <a
+                        href="mailto:noemail@yahoo.com"
+                        class="flex items-center justify-center gap-[1.5px] transition hover:text-white">
+                        <img src="../assets/icons/mail.svg" alt="" class="h-5 w-5" />
+                        <span>hello@skillbirdge.com</span>
+                     </a>
+                     <a
+                        href="tel:+918181323509"
+                        class="flex items-center justify-center gap-[1.5px] transition hover:text-white">
+                        <img src="../assets/icons/phone.svg" alt="" class="h-5 w-5" />
+                        <span>+91 91813 23 2509</span>
+                     </a>
+                     <div
+                        class="basis-full flex items-center justify-center gap-[1.5px] min-[768px]:basis-auto">
+                        <img src="../assets/icons/location.svg" alt="" class="h-5 w-5" />
+                        <span>Somewhere in the World</span>
+                     </div>
+                  </div>
+
+                  <div class="mt-[30px] w-full min-[992px]:mt-10 min-[1920px]:mt-[50px]">
+                     <div
+                        class="relative flex w-full flex-col items-center gap-4 rounded-[30px] border border-bank-line bg-bank-bg px-3 pb-6 pt-[34px] min-[992px]:rounded-[100px] min-[992px]:flex-row min-[992px]:items-center min-[992px]:justify-between min-[992px]:px-3 min-[992px]:py-3 min-[992px]:pr-6">
+                        <div
+                           class="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-3 min-[992px]:static min-[992px]:translate-x-0 min-[992px]:translate-y-0">
+                           <a
+                              href="#"
+                              aria-label="Facebook"
+                              class="flex h-[44px] w-[44px] items-center justify-center rounded-[100px] bg-bank-lime p-3 transition hover:scale-105 min-[1920px]:h-[52px] min-[1920px]:w-[52px] min-[1920px]:p-[14px]">
+                              <img src="../assets/icons/facebook-footer.svg" alt="" />
+                           </a>
+                           <a
+                              href="#"
+                              aria-label="Twitter"
+                              class="flex h-[44px] w-[44px] items-center justify-center rounded-[100px] bg-bank-lime p-3 transition hover:scale-105 min-[1920px]:h-[52px] min-[1920px]:w-[52px] min-[1920px]:p-[14px]">
+                              <img src="../assets/icons/twitter.svg" alt="" />
+                           </a>
+                           <a
+                              href="#"
+                              aria-label="LinkedIn"
+                              class="flex h-[44px] w-[44px] items-center justify-center rounded-[100px] bg-bank-lime p-3 transition hover:scale-105 min-[1920px]:h-[52px] min-[1920px]:w-[52px] min-[1920px]:p-[14px]">
+                              <img src="../assets/icons/linkedin.svg" alt="" />
+                           </a>
+                        </div>
+
+                        <p class="text-center text-sm text-bank-copy min-[992px]:order-none">
+                           YourBank. All Rights Reserved
+                        </p>
+
+                        <div class="flex items-center justify-center gap-3 text-sm text-bank-copy">
+                           <a href="#" class="transition hover:text-white">Privacy Policy</a>
+                           <span class="text-white/12">|</span>
+                           <a href="#" class="transition hover:text-white">Terms of Service</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
+   </body>
 </html>
