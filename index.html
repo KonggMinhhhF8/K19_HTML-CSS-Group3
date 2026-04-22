@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourBank – Empowering Your Financial Journey</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+        box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+        }
+
+        .bg-custom-dark {
+          background:
+            linear-gradient(0deg, #1A1A1A, #1A1A1A),
+            linear-gradient(214.85deg, rgba(26, 26, 26, 0) 0%, #1A1A1A 39.72%);
+        }
+        .border-gradient {
+          border: 0.87px solid transparent;
+          background:
+            linear-gradient(#1C1C1C, #1C1C1C) padding-box,
+            linear-gradient(214.24deg,
+              rgba(202, 255, 51, 0.2) 0%,
+              rgba(202, 255, 51, 0) 11.24%,
+              rgba(202, 255, 51, 0) 91.73%,
+              rgba(202, 255, 51, 0.2) 99.95%
+            ) border-box;
+        }
+
+        .icon {
+          @apply inline-flex items-center justify-center rounded-full;
+        }
+        .icon-sm { @apply w-8 h-8; }
+        .icon-md { @apply w-10 h-10; }
+        .icon-lg { @apply w-12 h-12; }
+        .icon-green { background: #CAFF33; }
+        .icon-dark { background: #1A1A1A; }
+        .icon-svg {
+          @apply w-5 h-5;
+        }
+
+        /* ===== TAB ACTIVE STYLE ===== */
+        #tab-individual:checked ~ .Container-top .Tabs #btn-individual {
+            background: #CAFF33;
+            color: #1C1C1C;
+        }
+        #tab-business:checked ~ .Container-top .Tabs #btn-business {
+            background: #CAFF33;
+            color: #1C1C1C;
+        }
+        /* reset inactive */
+        #tab-individual:checked ~ .Container-top .Tabs #btn-business,
+        #tab-business:checked ~ .Container-top .Tabs #btn-individual {
+            background: transparent;
+            color: white;
+        }
+        /* ===== CONTENT SWITCH ===== */
+        #tab-individual:checked ~ .Container-bottom-ind {
+            display: flex;
+        }
+        #tab-individual:checked ~ .Container-bottom-biz {
+            display: none;
+        }
+        #tab-business:checked ~ .Container-bottom-ind {
+            display: none;
+        }
+        #tab-business:checked ~ .Container-bottom-biz {
+            display: flex;
+        }
+
+        /* ===== ACTIVE BUTTON ===== */
+        #tab-online:checked ~ .Container .Container-left #btn-online,
+        #tab-tools:checked ~ .Container .Container-left #btn-tools,
+        #tab-support:checked ~ .Container .Container-left #btn-support {
+            background: #1A1A1A;
+            color: #CAFF33;
+        }
+        /* reset */
+        #tab-online:checked ~ .Container .Container-left #btn-tools,
+        #tab-online:checked ~ .Container .Container-left #btn-support,
+        #tab-tools:checked ~ .Container .Container-left #btn-online,
+        #tab-tools:checked ~ .Container .Container-left #btn-support,
+        #tab-support:checked ~ .Container .Container-left #btn-online,
+        #tab-support:checked ~ .Container .Container-left #btn-tools {
+            background: transparent;
+            color: white;
+        }
+        /* ===== CONTENT SWITCH ===== */
+        .content-online,
+        .content-tools,
+        .content-support {
+            display: none;
+        }
+        #tab-online:checked ~ .Container .Container-right .content-online {
+            display: flex;
+        }
+        #tab-tools:checked ~ .Container .Container-right .content-tools {
+            display: flex;
+        }
+        #tab-support:checked ~ .Container .Container-right .content-support {
+            display: flex;
+        }
+
+        #menu-toggle:checked ~ .mobile-menu {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="bg-[#191919] text-white">
+    <header class="sticky -top-3 z-50 px-4 md:px-20 lg:px-40.5 py-10 md:py-7.5 lg:py-12.5">
+        <nav class="relative max-w-[358px] md:max-w-[1280px] lg:max-w-[1596px] mx-auto flex items-center justify-between gap-4 rounded-full bg-[#1C1C1C] border border-[#262626] px-6 py-3.5 md:px-6 md:py-3.5 lg:px-8.5 lg:py-5">
+            <img src="Img-index/Logo.png" alt="Logo" class="h-6.5 md:h-7.5 lg:h-10 w-auto">
+            <div class="hidden md:flex items-center gap-0">
+                <a href="#" class="md:px-4.5 md:py-2.5 lg:px-6 lg:py-3 hover:bg-[#262626] rounded-full transition md:text-sm md:leading-6 lg:text-lg lg:leading-7">Home</a>
+                <a href="#" class="md:px-4.5 md:py-2.5 lg:px-6 lg:py-3 hover:bg-[#262626] rounded-full transition md:text-sm md:leading-6 lg:text-lg lg:leading-7">Careers</a>
+                <a href="#" class="md:px-4.5 md:py-2.5 lg:px-6 lg:py-3 hover:bg-[#262626] rounded-full transition md:text-sm md:leading-6 lg:text-lg lg:leading-7">About</a>
+                <a href="#" class="md:px-4.5 md:py-2.5 lg:px-6 lg:py-3 hover:bg-[#262626] rounded-full transition md:text-sm md:leading-6 lg:text-lg lg:leading-7">Security</a>
+            </div>
+            <div class="hidden md:flex items-center gap-0 shrink-0">
+                <button class="md:px-6 md:py-3 lg:px-7.5 lg:py-3.5 rounded-full hover:bg-[#d7ff3f] hover:text-black transition whitespace-nowrap md:text-sm md:leading-6 lg:text-lg lg:leading-7">Sign Up</button>
+                <button class="md:px-6 md:py-3 lg:px-7.5 lg:py-3.5 rounded-full hover:bg-[#d7ff3f] hover:text-black transition whitespace-nowrap md:text-sm md:leading-6 lg:text-lg lg:leading-7">Login</button>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="hidden">
+            <label for="menu-toggle" class="md:hidden flex flex-col gap-1 cursor-pointer">
+                <span class="w-6 h-0.5 bg-white transition"></span>
+                <span class="w-6 h-0.5 bg-white transition"></span>
+                <span class="w-3 h-0.5 bg-white transition"></span>
+            </label>
+            <div class="mobile-menu absolute right-0 top-full mt-3 w-[250px] opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-in-out max-w-[1596px] mx-auto mt-3 px-6 py-6 rounded-2xl bg-[#1C1C1C] border border-[#262626]">
+                <div class="flex flex-col gap-3 items-center">
+                    <a href="#" class="py-2 hover:text-[#d7ff3f]">Home</a>
+                    <a href="#" class="py-2 hover:text-[#d7ff3f]">Careers</a>
+                    <a href="#" class="py-2 hover:text-[#d7ff3f]">About</a>
+                    <a href="#" class="py-2 hover:text-[#d7ff3f]">Security</a>
+                </div>
+                <div class="flex flex-col gap-3 mt-4">
+                    <button class="flex-1 py-2 rounded-full hover:bg-[#d7ff3f] hover:text-black transition">
+                        Sign Up
+                    </button>
+                    <button class="flex-1 py-2 rounded-full hover:bg-[#d7ff3f] hover:text-black transition">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="relative md:py-15 md:pr-50 md:pl-20 lg:py-25 lg:pr-74.25 lg:pl-40.5">
+        <div class="max-w-[358px] md:max-w-[1440px] lg:max-w-[1920px] mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="absolute w-[382px] md:w-[546px] lg:w-[759px] -top-35 md:-top-40 lg:-top-50 left-0 pointer-events-none">
+                <img src="Img-index/anh1.png" class="w-full h-auto object-contain">
+            </div>
+            <!-- LEFT -->
+            <div class="flex flex-col md:items-start items-center justify-center gap-7.5 md:gap-10 lg:gap-12.5">
+                <div class="flex flex-col md:items-start items-center gap-3 md:gap-4 lg:gap-5">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center rounded-full bg-[#262626] gap-1 px-4 py-2 lg:gap-1.5 lg:px-5 lg:py-2.5">
+                        <div class="w-5 md:w-5 lg:w-6">
+                            <img src="Img-index/Tick.png" class="w-full h-auto object-contain">
+                        </div>
+                        <span class="font-light text-xs md:text-sm lg:text-lg leading-6">No LLC Required, No Credit Check.</span>
+                    </div>
+                    <!-- Text -->
+                    <div class="flex flex-col gap-4">
+                        <h1 class="font-medium text-[28px] md:text-[28px] lg:text-[48px] text-center md:text-left"> Welcome to YourBank <br> Empowering Your <span class="text-[#CAFF33]">Financial Journey</span></h1>
+                        <p class="font-light  text-[14px] md:text-[16px] lg:text-[18px] text-gray-300 max-w-xl text-center md:text-left"> At YourBank, our mission is to provide comprehensive banking solutions that empower individuals and businesses to achieve their financial goals. We are committed to delivering personalized and innovative services. </p>
+                    </div>
+                </div>
+                <!-- Button -->
+                <button class="w-fit font-normal text-[14px] lg:text-[18px] px-6 py-3 lg:px-[30px] lg:py-[18px] rounded-[82px] bg-[#CAFF33] text-black hover:brightness-110 transition active:scale-95"> Open Account </button>
+            </div>
+            <!-- RIGHT -->
+            <div class="Container-right w-[515.02px] h-[624.48px] flex flex-col gap-[26.01px] rounded-[10.4px] border-[0.87px] p-[34.68px] bg-custom-dark border-gradient relative">
+                <div class="absolute top-0 right-0 w-[30%] h-[30%] bg-[url('./photo-index/anh4.png')] bg-no-repeat bg-contain opacity-50 mix-blend-screen [mask-image:linear-gradient(to_bottom_left,black,transparent)]"></div>
+                <div class="Sub-container w-[446px] flex flex-col gap-[17px]">
+                    <p class="w-[445.66px] h-[26px] font-medium text-[17.34px] leading-[150%] tracking-normal">Your Transactions</p>
+                    <div class="container flex flex-col item-center">
+                        <div class="container1 relative z-30 w-full h-auto flex justify-between opacity-100 py-[13.87px] pr-[20.81px] pl-[20.81px] rounded-[10.4px] border-[0.87px] border-[#262626] bg-[#1C1C1C]">
+                            <div class="container flex gap-[8.67px] items-center">
+                                <div class="logo w-[38.15px] h-[38.15px] flex items-center justify-center opacity-100 rounded-[45.95px] p-[8.67px] bg-[#CAFF33]">
+                                    <img class="w-[16.65px] h-[16.65px] text-[#1A1A1A]" src="Img-index/Vector.png">
+                                </div>
+                                <div class="text w-fit h-fit opacity-100">
+                                    <p class="font-light text-[15.61px] leading-[150%] tracking-normal">Transaction</p>
+                                    <p class="font-normal text-[17.34px] leading-[150%] tracking-normal">Joel Kenley</p>
+                                </div>
+                            </div>
+                            <p class="w-[77px] h-[31px] absolute bottom-[13.87px] right-[20.81px] font-medium text-[20.81px] leading-[150%] tracking-normal">-$68.00</p>
+                        </div>
+                        <div class="container2 z-20 -mt-6 w-full h-auto flex justify-between opacity-50 px-[17.34px] gap-[8.67px] bg-[#1C1C1C]">
+                            <div class="container relative w-full h-auto flex justify-between pt-[13.87px] pr-[20.81px] pb-[13.87px] pl-[20.81px] rounded-[10.4px] border-[0.87px] border-[#262626] bg-[#1C1C1C]">
+                                <div class="container flex gap-[8.67px] items-center">
+                                    <div class="logo w-[38.15px] h-[38.15px] flex items-center justify-center opacity-100 rounded-[45.95px] p-[8.67px] bg-[#CAFF33]">
+                                        <img class="w-[16.65px] h-[16.65px] text-[#1A1A1A]" src="Img-index/Vector.png">
+                                    </div>
+                                    <div class="text w-fit h-fit opacity-100">
+                                        <p class="font-light text-[15.61px] leading-[150%] tracking-normal">Transaction</p>
+                                        <p class="font-normal text-[17.34px] leading-[150%] tracking-normal">Joel Kenley</p>
+                                    </div>
+                                </div>
+                                <p class="w-[77px] h-[31px] absolute bottom-[13.87px] right-[20.81px] font-medium text-[20.81px] leading-[150%] tracking-normal">-$68.00</p>
+                            </div>
+                        </div>
+                        <div class="container3 z-10 -mt-6 w-full h-auto flex justify-between opacity-20 px-[34.68px] gap-[8.67px]">
+                            <div class="container relative w-full h-auto flex justify-between pt-[13.87px] pr-[20.81px] pb-[13.87px] pl-[20.81px] rounded-[10.4px] border-[0.87px] border-[#262626] bg-[#1C1C1C]">
+                                <div class="container flex gap-[8.67px] items-center">
+                                    <div class="logo w-[38.15px] h-[38.15px] flex items-center justify-center opacity-100 rounded-[45.95px] p-[8.67px] bg-[#CAFF33]">
+                                        <img class="w-[16.65px] h-[16.65px] text-[#1A1A1A]" src="Img-index/Vector.png">
+                                    </div>
+                                    <div class="text w-fit h-fit opacity-100">
+                                        <p class="font-light text-[15.61px] leading-[150%] tracking-normal">Transaction</p>
+                                        <p class="font-normal text-[17.34px] leading-[150%] tracking-normal">Joel Kenley</p>
+                                    </div>
+                                </div>
+                                <p class="w-[77px] h-[31px] absolute bottom-[13.87px] right-[20.81px] font-medium text-[20.81px] leading-[150%] tracking-normal">-$68.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Sub-container w-[447px] h-auto opacity-100 flex flex-col gap-[25.14px]">
+                    <p class="w-[445.66px] h-[26px] opacity-100 font-medium text-[17.34px] leading-[150%] tracking-normal text-white">Money Exchange</p>
+                    <div class="container w-full  h-auto opacity-100 rounded-[10.4px] border-[0.87px] border-[#262626] flex flex-col items-center">
+                        <div class="container-top w-full max-w-[445.66px] h-auto opacity-100 flex relative">
+                            <div class="INR w-full max-w-[222.83px] h-auto opacity-100 flex flex-col gap-[8.67px] p-[17.34px] bg-[#1C1C1C]">
+                                <div class="name w-full h-auto opacity-100 flex items-center gap-[8.67px]">
+                                    <img class="w-[34.68px] h-[34.68px] opacity-100" src="Img-index/INR.png">
+                                    <p class="w-[144.80px] h-[23px] opacity-100 font-normal text-[15.61px] leading-[150%] tracking-normal text-white">INR</p>
+                                </div>
+                                <p class="text w-[188.15px] h-[21px] opacity-100 font-light text-[13.87px] leading-[150%] tracking-normal text-[#E4E4E7]">Indian Rupees</p>
+                            </div>
+                            <div class="w-[0.87px] h-[99.03px] bg-[#262626] absolute left-1/2 top-0"></div>
+                            <div class="USD w-full max-w-[222.83px] h-auto opacity-100 flex flex-col gap-[8.67px] p-[17.34px] bg-[#1C1C1C]">
+                                <div class="name w-full h-auto opacity-100 flex items-center gap-[8.67px]">
+                                    <img class="w-[34.68px] h-[34.68px] opacity-100" src="Img-index/USD.png">
+                                    <p class="w-[144.80px] h-[23px] opacity-100 font-normal text-[15.61px] leading-[150%] tracking-normal text-white">USD</p>
+                                </div>
+                                <p class="text w-[188.15px] h-[21px] opacity-100 font-light text-[13.87px] leading-[150%] tracking-normal text-[#E4E4E7]">United States Dollar</p>
+                            </div>
+                        </div>
+                        <div class="w-[445.66px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <div class="container-bottom w-full max-w-[445.66px] h-auto opacity-100 flex relative">
+                            <div class="INR w-full h-auto opacity-100 pt-[26.01px] pr-[17.34px] pb-[26.01px] pl-[17.34px] gap-[8.67px]">
+                                <p class="number w-[188.15px] h-[26px] opacity-100 font-medium text-[17.34px] leading-[150%] tracking-normal text-white">5,0000</p>
+                            </div>
+                            <div class="w-[0.87px] h-[78.02px] bg-[#262626] absolute left-1/2 top-0"></div>
+                            <div class="USD w-full h-auto opacity-100 pt-[26.01px] pr-[17.34px] pb-[26.01px] pl-[17.34px] gap-[8.67px]">
+                                <div class="number w-[188.15px] h-[26px] opacity-100 font-medium text-[17.34px] leading-[150%] tracking-normal text-white">12.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full h-auto opacity-100 pt-[13.87px] pr-[26.01px] pb-[13.87px] pl-[26.01px] gap-[8.67px] rounded-[71.1px] flex items-center justify-center bg-[#22251B]">
+                        <p class="w-[74px] h-[23px] opacity-100 font-normal text-[15.61px] leading-[150%] tracking-normal text-[#D1FF4D]">Exchange</p>
+                    </button>
+                </div>
+                <div class="Container absolute -top-[43.35px] -left-[60.69px] w-fit h-fit flex items-center justify-center opacity-100 pt-[13.87px] pr-[17.34px] pb-[13.87px] pl-[17.34px] gap-[8.67px] rounded-[10.4px] bg-[#22251B]">
+                    <div class="logo w-[38.15px] h-[38.15px] flex items-center justify-center opacity-100 rounded-[45.95px] p-[8.67px] bg-[#CAFF33]">
+                        <img class="w-[20.81px] h-[20.81px] text-[#1A1A1A]" src="Img-index/Plus.png">
+                    </div>
+                    <div class="text w-fit h-fit opacity-100 gap-[0.87px]">
+                        <p class="w-[107px] h-[26px] opacity-100 font-normal text-[17.34px] leading-[150%] tracking-normal text-white">+ $5000,00</p>
+                        <p class="w-[107px] h-[21px] opacity-100 font-light text-[13.87px] leading-[150%] tracking-normal text-[#E4E4E7]">Monthly Income</p>
+                    </div>
+                </div>
+                <div class="Container absolute -bottom-[81.88px] -right-[52.02px] w-[370.22px] h-[69.36px] flex items-center justify-between pt-[8.67px] pr-[8.67px] pb-[8.67px] pl-[20.81px] rounded-[69.36px] opacity-100 bg-[#22251B]">
+                    <p class="text-[15.61px] leading-[150%] font-normal text-white">Supported Currency</p>
+                    <div class="container-icon inline-flex items-center gap-[6.94px] px-[8.67px] py-[8.67px] rounded-[47.69px] bg-[#1A1A1A] border-[0.87px] border-[#262626] opacity-100">
+                        <div class="icon w-[34.68px] h-[34.68px] opacity-100">
+                            <div class="oval w-[34.68px] h-[34.68px] rounded-full bg-[#262626] flex items-center justify-center">
+                                <img class="w-[10.3px] h-[16.49px]" src="Img-index/Icon-hero-1.png">
+                            </div>
+                        </div>
+                        <div class="icon w-[34.68px] h-[34.68px] opacity-100">
+                            <div class="oval w-[34.68px] h-[34.68px] rounded-full bg-[#262626] flex items-center justify-center">
+                                <img class="w-[10.3px] h-[16.49px]" src="Img-index/Icon-hero-2.png">
+                            </div>
+                        </div>
+                        <div class="icon w-[34.68px] h-[34.68px] opacity-100">
+                            <div class="oval w-[34.68px] h-[34.68px] rounded-full bg-[#262626] flex items-center justify-center">
+                                <img class="w-[10.3px] h-[16.49px]" src="Img-index/Icon-hero-3.png">
+                            </div>
+                        </div>
+                        <div class="icon w-[34.68px] h-[34.68px] opacity-100">
+                            <div class="oval w-[34.68px] h-[34.68px] rounded-full bg-[#262626] flex items-center justify-center">
+                                <img class="w-[10.3px] h-[16.49px]" src="Img-index/Icon-hero-4.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="anh2 -z-10 absolute w-[417.95px] h-[382.73px] top-[110px] right-[100px] opacity-100">
+                <img src="Img-index/anh3.png">
+            </div>
+        </div>
+    </section>
+    <section class="products w-full max-w-[1596px] mx-[162px] my-[150px] flex flex-col gap-[100px]">
+        <input type="radio" name="tab" id="tab-individual" checked class="hidden peer/ind">
+        <input type="radio" name="tab" id="tab-business" class="hidden peer/biz">
+        <div class="Container-top w-full max-w-[1596px] mx-auto h-[140px] flex items-center justify-between gap-[300px]">
+            <div class="Text w-full max-w-[910px] flex flex-col gap-[14px]">
+                <p class="font-medium text-[48px] leading-[150%] tracking-normal">
+                    Our
+                    <span class="text-[#CAFF33]">Products</span>
+                </p>
+                <p class="font-light text-lg leading-[150%] tracking-normal">
+                    Discover a range of comprehensive and customizable banking products at YourBank, designed to suit your unique financial needs and aspirations
+                </p>
+            </div>
+            <div class="Tabs w-full max-w-[386px] p-[14px] bg-[#1C1C1C] border border-[#262626] rounded-[82px] flex ml-auto self-end">
+                <label for="tab-individual" class="w-full max-w-[181px] px-6 py-[14px] flex items-center justify-center rounded-[140px] cursor-pointer transition" id="btn-individual">
+                    <span class="text-lg">For Individuals</span>
+                </label>
+                <label for="tab-business" class="w-full max-w-[181px] px-6 py-[14px] flex items-center justify-center rounded-[140px] cursor-pointer transition" id="btn-business">
+                    <span class="text-lg">For Businesses</span>
+                </label>
+            </div>
+        </div>
+        <div class="Container-bottom-ind flex items-center justify-between gap-[50px]">
+                <div class="Container-1 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                    <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                        <img src="Img-index/product-1.png">
+                    </div>
+                    <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                        <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Checking Accounts</p>
+                        <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                            Enjoy easy and convenient access to your funds with our range of checking account options. Benefit from features such as online and mobile banking, debit cards, and free ATM access.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-[0.87px] h-[319px] bg-[#262626] top-0"></div>
+                <div class="Container-2 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                    <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                        <img src="Img-index/product-2.png">
+                    </div>
+                    <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                        <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Savings Accounts</p>
+                        <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                            Build your savings with our competitive interest rates and flexible savings account options. Whether you're saving for a specific goal or want to grow your wealth over time, we have the right account for you.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-[0.87px] h-[319px] bg-[#262626] top-0"></div>
+                <div class="Container-3 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                    <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                        <img src="Img-index/product-3.png">
+                    </div>
+                    <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                        <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Loans and Mortgages</p>
+                        <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                            Realize your dreams with our flexible loan and mortgage options. From personal loans to home mortgages, our experienced loan officers are here to guide you through the application process and help you secure the funds you need.
+                        </p>
+                    </div>
+                </div>
+        </div>
+        <div class="Container-bottom-biz flex items-center justify-between gap-[50px]">
+            <div class="Container-1 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                    <img src="Img-index/product-1.png">
+                </div>
+                <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                    <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Business Accounts</p>
+                    <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                        Manage your company finances efficiently with dedicated business accounts, multi-user access, and smart cash flow tools designed for growing enterprises.
+                    </p>
+                </div>
+            </div>
+            <div class="w-[0.87px] h-[319px] bg-[#262626] top-0"></div>
+            <div class="Container-2 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                    <img src="Img-index/product-2.png">
+                </div>
+                <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                    <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Corporate Savings</p>
+                    <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                        Optimize idle capital with high-yield corporate savings solutions, flexible liquidity options, and automated interest management for better financial planning.
+                    </p>
+                </div>
+            </div>
+            <div class="w-[0.87px] h-[319px] bg-[#262626] top-0"></div>
+            <div class="Container-3 w-full max-w-[465px] min-h-[319px] flex flex-col items-center gap-[30px]">
+                <div class="Container-icon w-[98px] h-[98px] p-3 flex items-center justify-center">
+                    <img src="Img-index/product-3.png">
+                </div>
+                <div class="Container-text w-full max-w-[465px] flex flex-col gap-[20px]">
+                    <p class="font-normal text-2xl leading-[150%] tracking-normal text-center">Business Financing</p>
+                    <p class="font-light text-lg leading-[150%] tracking-normal text-center text-[#B3B3B3]">
+                        Access tailored financing solutions including working capital loans, expansion funding, and asset financing to support your business growth at every stage.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="use-cases w-full max-w-[1596px] mx-[162px] my-[150px] flex flex-col gap-[80px]">
+        <div class="Container-text flex flex-col pr-[300px] opacity-100">
+            <p class="font-medium text-[48px] leading-[150%] tracking-[0%] text-[#CAFF33]">Use Cases</p>
+            <p class="font-light text-[18px] leading-[150%] tracking-[0%] text-[#B3B3B3]">At YourBank, we cater to the diverse needs of individuals and businesses alike, offering a wide range of financial solutions</p>
+        </div>
+        <div class="Container-sub flex flex-col justify-between gap-[60px]">
+            <div class="container-top flex items-center justify-between gap-[100px]">
+                <div class="container-left w-full max-w-[748px] flex flex-col gap-[20px] rounded-[20px] p-[50px] bg-[#1C1C1C] relative">
+                    <div class="w-[224px] h-[213px] absolute top-[0px] left-[0px] opacity-100">
+                        <img src="Img-index/usecase-1.png">
+                    </div>
+                    <div class="z-10 w-full max-w-[648px] flex gap-[20px]">
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon1.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Managing Personal <br> Finances</p>
+                        </div>
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon2.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Saving for the Future</p>
+                        </div>
+                    </div>
+                    <div class="w-full max-w-[648px] flex gap-[20px]">
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon3.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Homeownership</p>
+                        </div>
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon4.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Education Funding</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-right w-full max-w-[748px] flex flex-col gap-[62px]">
+                    <div class="flex flex-col gap-[14px]">
+                        <p class="font-medium text-[30px] leading-[150%] tracking-[0%]">For Individuals</p>
+                        <p class="font-light text-[18px] leading-[150%] tracking-[0%] text-[#B3B3B3]">
+                            For individuals, our mortgage services pave the way to homeownership, and our flexible
+                            <br> personal loans provide vital support during various life milestones. We also prioritize
+                            <br>retirement planning, ensuring a financially secure future for our customers</p>
+                    </div>
+                    <div class="flex gap-[50px]">
+                        <div class="Container-1 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">78%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Secure Retirement <br> Planning</p>
+                        </div>
+                        <div class="w-0 h-[146px] border border-dashed border-[#262626]"></div>
+                        <div class="Container-2 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">63%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Manageable Debt <br> Consolidation</p>
+                        </div>
+                        <div class="w-0 h-[146px] border border-dashed border-[#262626]"></div>
+                        <div class="Container-3 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">91%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Reducing financial <br> burdens</p>
+                        </div>
+                    </div>
+                    <button class="inline-flex items-center justify-center rounded-[82px] py-[18px] px-[24px] bg-[#1C1C1C] border border-[#262626] w-fit">
+                        <p class="font-normal text-[18px] leading-[150%] text-center w-fit">Learn More</p>
+                    </button>
+                </div>
+            </div>
+            <div class="container-bottom flex items-center justify-between gap-[100px]">
+                <div class="container-left w-full max-w-[748px] flex flex-col gap-[62px]">
+                    <div class="flex flex-col gap-[14px]">
+                        <p class="font-medium text-[30px] leading-[150%] tracking-[0%]">For Business</p>
+                        <p class="font-light text-[18px] leading-[150%] tracking-[0%] text-[#B3B3B3]">
+                            For businesses, we empower growth with working capital solutions that optimize cash
+                            <br> flow, and our tailored financing options fuel business expansion. Whatever your
+                            <br> financial aspirations, YourBank is committed to providing the right tools and support to
+                            <br> achieve them
+                        </p>
+                    </div>
+                    <div class="flex gap-[50px]">
+                        <div class="Container-1 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">65%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Cash Flow <br> Management</p>
+                        </div>
+                        <div class="w-0 h-[146px] border border-dashed border-[#262626]"></div>
+                        <div class="Container-2 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">70%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Drive Business <br> Expansion</p>
+                        </div>
+                        <div class="w-0 h-[146px] border border-dashed border-[#262626]"></div>
+                        <div class="Container-3 w-full max-w-[182.67px] flex flex-col gap-[5px]">
+                            <p class="font-medium text-[58px] leading-[150%] tracking-[0%] text-[#CAFF33]">45%</p>
+                            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Streamline payroll <br> processing</p>
+                        </div>
+                    </div>
+                    <button class="inline-flex items-center justify-center rounded-[82px] py-[18px] px-[24px] bg-[#1C1C1C] border border-[#262626] w-fit">
+                        <p class="font-normal text-[18px] leading-[150%] text-center w-fit">Learn More</p>
+                    </button>
+                </div>
+                <div class="container-right w-full max-w-[748px] flex flex-col gap-[20px] rounded-[20px] p-[50px] bg-[#1C1C1C] relative">
+                    <div class="w-[224px] h-[213px] absolute top-[0px] right-[0px] opacity-100">
+                        <img src="Img-index/usecase-2.png">
+                    </div>
+                    <div class="z-10 w-full max-w-[648px] flex gap-[20px]">
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon5.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Startups and <br> Entrepreneurs</p>
+                        </div>
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon6.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Cash Flow Management</p>
+                        </div>
+                    </div>
+                    <div class="w-full max-w-[648px] flex gap-[20px]">
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon7.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Business Expansion</p>
+                        </div>
+                        <div class="card w-full max-w-[314px] flex flex-col items-center gap-[24px] rounded-[16px] p-[30px] bg-[#1A1A1A] border border-[#262626]">
+                            <img class="w-[78px] h-[78px]" src="Img-index/usecase-icon8.png">
+                            <p class="font-normal text-[20px] leading-[150%] tracking-[0%] text-center">Payment Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features w-full max-w-[1596px] mx-[162px] my-[150px] flex flex-col gap-[80px]">
+        <input type="radio" name="feature" id="tab-online" checked hidden>
+        <input type="radio" name="feature" id="tab-tools" hidden>
+        <input type="radio" name="feature" id="tab-support" hidden>
+        <div class="Container w-full max-w-[1596px] flex flex-col gap-[14px] pr-[300px]">
+            <p class="font-medium text-[48px] leading-[150%] tracking-normal">
+                Our
+                <span class="text-[#CAFF33]">Features</span>
+            </p>
+            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                Experience a host of powerful features at YourBank, including seamless online banking, secure transactions, and personalized financial insights, all designed to enhance your banking experience
+            </p>
+        </div>
+        <div class="Container w-full max-w-[1596px] flex gap-[30px]">
+            <div class="Container-left w-full max-w-[308px] h-fit flex flex-col gap-[24px] rounded-[12px] p-[50px] bg-[#1C1C1C]">
+                <label for="tab-online" id="btn-online" class="cursor-pointer w-full max-w-[208px] inline-flex rounded-[100px] py-[18px] px-[24px] border border-[#262626]">
+                    <p class="text-[18px]">Online Banking</p>
+                </label>
+                <label for="tab-tools" id="btn-tools" class="cursor-pointer w-full max-w-[208px] inline-flex rounded-[100px] py-[18px] px-[24px] border border-[#262626]">
+                    <p class="text-[18px]">Financial Tools</p>
+                </label>
+                <label for="tab-support" id="btn-support" class="cursor-pointer w-full max-w-[208px] inline-flex rounded-[100px] py-[18px] px-[24px] border border-[#262626]">
+                    <p class="text-[18px]">Customer Support</p>
+                </label>
+            </div>
+            <div class="Container-right w-full max-w-[1258px] flex flex-col gap-[30px]">
+                <div class="content-online flex flex-col gap-[30px]">
+                    <div class="container-top flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">24/7 Account Access</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Enjoy the convenience of accessing your accounts anytime, anywhere through our secure online banking platform. Check balances, transfer funds, and pay bills with ease.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Mobile Banking App</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Stay connected to your finances on the go with our user-friendly mobile banking app. Easily manage your accounts, deposit checks, and make payments from your smartphone or tablet.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container-bottom flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Secure Transactions</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Rest assured knowing that your transactions are protected by industry-leading security measures. We employ encryption and multi-factor authentication to safeguard your financial information.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Bill Pay and Transfers</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Save time and avoid late fees with our convenient bill pay service. Set up recurring payments or make one-time transfers between your accounts with just a few clicks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-tools flex flex-col gap-[30px]">
+                    <div class="container-top flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Smart Budgeting Tools</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Take control of your finances with intelligent budgeting tools. Track your spending habits, set limits, and receive insights to improve your financial health.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Expense Analytics</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Get detailed insights into your transactions with visual reports and analytics. Understand where your money goes and make smarter financial decisions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container-bottom flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Savings Goals</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Set personalized savings goals and monitor your progress in real-time. Stay motivated and achieve your financial targets faster.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Financial Planning</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Plan ahead with powerful financial tools designed to help you manage investments, savings, and long-term financial goals effectively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-support flex flex-col gap-[30px]">
+                    <div class="container-top flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">24/7 Customer Support</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Our dedicated support team is available around the clock to assist you with any inquiries or issues, ensuring a smooth banking experience.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Live Chat Assistance</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Get instant help through our live chat feature. Connect with support agents quickly and resolve your concerns without delay.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container-bottom flex gap-[30px]">
+                        <div class="container-1 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Help Center</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Explore our comprehensive help center filled with guides, FAQs, and tutorials to assist you in using our services efficiently.
+                            </p>
+                        </div>
+                        <div class="container-2 w-full max-w-[614px] min-h-[272px] flex flex-col gap-[30px] rounded-[12px] p-[50px] bg-[#1C1C1C] border border-[#262626]">
+                            <div class="flex gap-[10px]">
+                                <p class="flex-1 font-normal text-[22px] leading-[150%]">Personal Assistance</p>
+                                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/features-icon.png">
+                            </div>
+                            <p class="font-light text-[18px] leading-[150%] tracking-[-0.006em] text-[#B3B3B3]">
+                                Receive personalized support tailored to your needs. Our specialists are ready to guide you through complex financial processes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="FAQ w-full max-w-[1596px] mx-[162px] my-[150px] flex flex-col gap-[80px]">
+        <div class="Container-top w-full max-w-[1596px] flex flex-col gap-[14px] pr-[300px]">
+            <p class="font-medium text-[48px] leading-[150%] tracking-normal">
+                <span class="text-[#CAFF33]">Frequently</span>
+                Asked Questions
+            </p>
+            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                Still you have any questions? Contact our Team via support@yourbank.com
+            </p>
+        </div>
+        <div class="Container-bottom w-full max-w-[1595px] flex flex-col items-center justify-between">
+            <div class="Container flex flex-col gap-[30px] relative">
+                <div class="Row flex gap-[30px]">
+                    <div class="FAQ-1 w-full max-w-[782.5px] min-h-[347px] flex flex-col gap-[30px] rounded-[14px] p-[50px] border border-[#262626]">
+                        <p class="font-medium text-[20px] leading-[100%]">How do I open an account with YourBank?</p>
+                        <div class="w-[680.5px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                            Opening an account with YourBank is easy. Simply visit our website and click on the "Open an Account" button. Follow the prompts, provide the required information, and complete the application process. If you have any questions or need assistance, our customer support team is available to help.
+                        </p>
+                    </div>
+                    <div class="FAQ-2 w-full max-w-[782.5px] min-h-[347px] flex flex-col gap-[30px] rounded-[14px] p-[50px] border border-[#262626]">
+                        <p class="font-medium text-[20px] leading-[100%]">How do I open an account with YourBank?</p>
+                        <div class="w-[680.5px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                            Opening an account with YourBank is easy. Simply visit our website and click on the "Open an Account" button. Follow the prompts, provide the required information, and complete the application process. If you have any questions or need assistance, our customer support team is available to help.
+                        </p>
+                    </div>
+                </div>
+                <div class="Row flex gap-[30px]">
+                    <div class="FAQ-1 w-full max-w-[782.5px] min-h-[347px] flex flex-col gap-[30px] rounded-[14px] p-[50px] border border-[#262626]">
+                        <p class="font-medium text-[20px] leading-[100%]">How do I open an account with YourBank?</p>
+                        <div class="w-[680.5px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                            Opening an account with YourBank is easy. Simply visit our website and click on the "Open an Account" button. Follow the prompts, provide the required information, and complete the application process. If you have any questions or need assistance, our customer support team is available to help.
+                        </p>
+                    </div>
+                    <div class="FAQ-2 w-full max-w-[782.5px] min-h-[347px] flex flex-col gap-[30px] rounded-[14px] p-[50px] border border-[#262626]">
+                        <p class="font-medium text-[20px] leading-[100%]">How do I open an account with YourBank?</p>
+                        <div class="w-[680.5px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                            Opening an account with YourBank is easy. Simply visit our website and click on the "Open an Account" button. Follow the prompts, provide the required information, and complete the application process. If you have any questions or need assistance, our customer support team is available to help.
+                        </p>
+                    </div>
+                </div>
+                <div class="absolute bottom-0 left-0 w-full max-w-[1595px] h-[275px] bg-gradient-to-b from-transparent to-[#191919]"></div>
+            </div>
+            <button class="w-full max-w-[193px] inline-flex items-center justify-between gap-[4px] rounded-full py-[18px] px-[24px] bg-[#1C1C1C] border border-[#262626]">
+                <p class="font-normal text-[18px] leading-[150%]">Load All FAQ’s</p>
+                <img class="w-[22px] h-[22px] shrink-0" src="Img-index/FAQ-load.png">
+            </button>
+        </div>
+    </section>
+    <section class="testimonials w-full max-w-[1596px] mx-[162px] my-[150px] flex flex-col gap-[100px]">
+        <div class="Container-top w-full max-w-[1596px] mx-auto h-[140px] flex items-center justify-between gap-[300px]">
+            <div class="Text w-full max-w-[910px] flex flex-col gap-[14px]">
+                <p class="font-medium text-[48px] leading-[150%] tracking-normal">
+                    Our
+                    <span class="text-[#CAFF33]">Testimonials</span>
+                </p>
+                <p class="font-light text-lg leading-[150%] tracking-normal text-[#B3B3B3]">
+                    Discover how YourBank has transformed lives with innovative digital solutions and personalized customer service. See why our clients trust us for a secure and prosperous financial journey
+                </p>
+            </div>
+            <div class="Tabs w-full max-w-[386px] p-[14px] bg-[#1C1C1C] border border-[#262626] rounded-[82px] flex ml-auto self-end">
+                <label class="w-full max-w-[181px] px-6 py-[14px] flex items-center justify-center rounded-[140px] cursor-pointer transition">
+                    <span class="text-lg">For Individuals</span>
+                </label>
+                <label class="w-full max-w-[181px] px-6 py-[14px] flex items-center justify-center rounded-[140px] cursor-pointer transition">
+                    <span class="text-lg">For Businesses</span>
+                </label>
+            </div>
+        </div>
+        <div class="Container-bottom w-full max-w-[1596px] flex items-center justify-between gap-[50px]">
+            <label class="flex gap-[10px] rounded-full p-[14px] bg-[#1C1C1C] border border-[#262626]">
+                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/Test-item1.png">
+            </label>
+            <div class="Container-item flex gap-[80px] relative">
+                <div class="Item-1 w-full max-w-[404px] flex flex-col gap-[50px]">
+                    <div class="w-full max-w-[404px] flex items-center gap-[20px]">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <img class="w-[60px] h-[60px] shrink-0" src="Img-index/Test-item3.png">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                    </div>
+                    <p class="w-full max-w-[404px] min-h-[135px] font-normal text-[18px] leading-[150%] text-center">
+                        YourBank has been my trusted financial
+                        <br> partner for years. Their personalized service
+                        <br> and innovative digital banking solutions have
+                        <br> made managing my finances a breeze.
+                    </p>
+                    <p class="font-medium text-[18px] leading-[150%] text-center text-[#CAFF33]">
+                        Sara T
+                    </p>
+                </div>
+                <div class="Item-2 w-full max-w-[404px] flex flex-col gap-[50px]">
+                    <div class="w-full max-w-[404px] flex items-center gap-[20px]">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <img class="w-[60px] h-[60px] shrink-0" src="Img-index/Test-item3.png">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                    </div>
+                    <p class="w-full max-w-[404px] min-h-[135px] font-normal text-[18px] leading-[150%] text-center">
+                        I recently started my own business, and
+                        <br> YourBank has been instrumental in helping
+                        <br> me set up my business accounts and secure
+                        <br> the financing I needed. Their expert guidance
+                        <br> and tailored solutions have been invaluable.
+                    </p>
+                    <p class="font-medium text-[18px] leading-[150%] text-center text-[#CAFF33]">
+                        John D
+                    </p>
+                </div>
+                <div class="Item-3 w-full max-w-[404px] flex flex-col gap-[50px]">
+                    <div class="w-full max-w-[404px] flex items-center gap-[20px]">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                        <img class="w-[60px] h-[60px] shrink-0" src="Img-index/Test-item3.png">
+                        <div class="w-[152px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+                    </div>
+                    <p class="w-full max-w-[404px] min-h-[135px] font-normal text-[18px] leading-[150%] text-center">
+                        I love the convenience of YourBank's mobile
+                        <br> banking app. It allows me to stay on top of
+                        <br> my finances and make transactions on the go.
+                        <br> The app is user-friendly and secure, giving me
+                        <br> peace of mind.
+                    </p>
+                    <p class="font-medium text-[18px] leading-[150%] text-center text-[#CAFF33]">
+                        Emily G
+                    </p>
+                </div>
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full max-w-[556px] h-[349px] bg-gradient-to-l from-transparent to-[#191919]"></div>
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-[556px] h-[349px] bg-gradient-to-l from-[#191919] to-transparent"></div>
+            </div>
+            <label class="flex gap-[10px] rounded-full p-[14px] bg-[#1C1C1C] border border-[#262626]">
+                <img class="w-[34px] h-[34px] shrink-0" src="Img-index/Test-item2.png">
+            </label>
+        </div>
+    </section>
+    <section class="CTA relative w-full max-w-[1596px] mx-[162px] my-[150px] flex items-center justify-between gap-[150px] rounded-[20px] p-[80px] border bg-[linear-gradient(0deg,#1C1C1C,#1C1C1C),linear-gradient(267.5deg,#1C1C1C_40.67%,rgba(28,28,28,0)_99.81%)] border border-transparent">
+        <img class="z-10 absolute top-0 left-0 w-[298px] h-[293px] shrink-0" src="Img-index/CTA.png">
+        <div class="Container-text z-20 w-full max-w-[1103px] flex flex-col gap-[14px]">
+            <p class="font-normal text-[40px] leading-[150%]">
+                Start your financial journey with
+                <span class="text-[#CAFF33]">YourBank today!</span>
+            </p>
+            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                Ready to take control of your finances? Join YourBank now, and let us help you achieve your financial goals with our tailored solutions and exceptional customer service
+            </p>
+        </div>
+        <label class="w-full max-w-[183px] inline-flex items-center justify-center gap-[10px] rounded-[82px] py-[18px] px-[30px] bg-[#CAFF33]">
+            <p class="font-normal text-[18px] leading-[150%] text-[#1C1C1C]">Open Account</p>
+        </label>
+    </section>
+    <footer class="footer w-full max-w-[1920px] flex flex-col gap-[50px] pt-[100px] pb-[50px] px-[162px] bg-[#1C1C1C]">
+        <div class="Container-top flex flex-col items-center gap-[50px]">
+            <div class="Logo flex-1 flex justify-start whitespace-nowrap">
+                <img class="w-[155.83px] h-[40px]" src="Img-index/Logo.png">
+            </div>
+            <div class="max-w-[323px] flex gap-[26px]">
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">Home</p>
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">Careers</p>
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">About</p>
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">Security</p>
+            </div>
+        </div>
+        <div class="w-[1596px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+        <div class="Container-center flex justify-center gap-[20px]">
+            <label class="email flex gap-[6px] rounded-[6px]">
+                <img class="w-[24px] h-[24px] shrink-0" src="Img-index/footer-icon1.png">
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">hello@skillbirdge.com</p>
+            </label>
+            <label class="phone flex gap-[6px] rounded-[6px]">
+                <img class="w-[24px] h-[24px] shrink-0" src="Img-index/footer-icon2.png">
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">+91 91813 23 2309</p>
+            </label>
+            <label class="map flex gap-[6px] rounded-[6px]">
+                <img class="w-[24px] h-[24px] shrink-0" src="Img-index/footer-icon3.png">
+                <p class="font-normal text-[18px] leading-[150%] text-[#E4E4E7]">Somewhere in the World</p>
+            </label>
+        </div>
+        <div class="w-[1596px] h-[0.87px] bg-[#262626] flex-shrink-0"></div>
+        <div class="Container-bottom flex items-center justify-between py-[16px] pr-[30px] pl-[16px] rounded-full bg-[#1A1A1A] border border-[#262626]">
+            <div class="flex gap-[14px]">
+                <img class="w-[52px] h-[52px] shrink-0" src="Img-index/footer-icon4.png">
+                <img class="w-[52px] h-[52px] shrink-0" src="Img-index/footer-icon5.png">
+                <img class="w-[52px] h-[52px] shrink-0" src="Img-index/footer-icon6.png">
+            </div>
+            <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">
+                YourBank All Rights Reserved
+            </p>
+            <div class="flex gap-[12px]">
+                <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Privacy Policy</p>
+                <div class="w-[0px] h-[27px] border border-[#B3B3B3]"></div>
+                <p class="font-light text-[18px] leading-[150%] text-[#B3B3B3]">Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
