@@ -1,0 +1,234 @@
+@media (max-width: 991px) {
+  .page-shell {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .values-grid,
+  .benefits-grid,
+  .jobs-grid,
+  .faq-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-shell {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  .site-header {
+    padding: 10px 16px !important;
+  }
+
+  .desktop-nav,
+  .desktop-actions {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: flex !important;
+    width: 72px !important;
+    height: 72px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-section,
+  .cta-outer,
+  .footer-wrapper {
+    border-radius: 24px !important;
+  }
+
+  .hero-inner {
+    padding: 8px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .hero-media {
+    order: 1 !important;
+    min-height: 255px !important;
+  }
+
+  .hero-image-wrapper {
+    position: relative !important;
+    left: auto !important;
+    inset: auto !important;
+    height: 255px !important;
+    border-radius: 22px !important;
+  }
+
+  .hero-content {
+    order: 2 !important;
+    margin-top: -34px !important;
+    padding: 34px 22px 28px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    border-radius: 28px !important;
+  }
+
+  .hero-content-inner {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-title {
+    font-size: 34px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-description {
+    margin-top: 18px !important;
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .hero-floating-pattern,
+  .hero-corner-cut {
+    display: none !important;
+  }
+
+  .values-section,
+  .benefits-section,
+  .jobs-section,
+  .faq-section,
+  .cta-section,
+  .site-footer {
+    margin-top: 64px !important;
+  }
+
+  .section-heading {
+    text-align: center !important;
+  }
+
+  .section-title {
+    font-size: 34px !important;
+    line-height: 1.2 !important;
+  }
+
+  .section-description {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  .values-grid,
+  .benefits-grid,
+  .jobs-grid,
+  .faq-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 40px !important;
+  }
+
+  .value-item {
+    padding-left: 20px !important;
+  }
+
+  .value-title {
+    font-size: 32px !important;
+    line-height: 1.1 !important;
+  }
+
+  .benefit-card,
+  .job-card,
+  .faq-card {
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .job-card h3 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+  }
+
+  .job-card h4,
+  .faq-card h3 {
+    font-size: 18px !important;
+  }
+
+  .job-card p,
+  .job-card li,
+  .faq-card p {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+
+  .cta-content {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+
+  .cta-content h2 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+  }
+
+  .cta-content p {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+
+  .footer-nav {
+    gap: 18px !important;
+  }
+
+  .footer-contact-list {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  .footer-bottom-bar {
+    border-radius: 22px !important;
+    padding: 18px 16px !important;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title,
+  .section-title,
+  .cta-content h2 {
+    font-size: 30px !important;
+  }
+
+  .hero-content {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .benefit-card,
+  .job-card,
+  .faq-card {
+    padding: 18px !important;
+  }
+
+  .mobile-menu-button {
+    width: 68px !important;
+    height: 68px !important;
+  }
+}
